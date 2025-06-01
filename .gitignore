@@ -1,0 +1,23 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environments
+venv/
+env/
+ENV/
+
+# Ignore dotenv file containing API keys
+.env
+
+# Ignore IDE/editor folders
+.idea/
+.vscode/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Uvicorn reload artifacts
+*.reload
