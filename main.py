@@ -1,14 +1,9 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-from llm_service import ask_llm
-
+from fastapi import FastAPI, Query
+from llm_service import ask_llm_with_langchain
 
 app = FastAPI()
 
-class QuestionRequest(BaseModel):
-    question: str
-
-@app.post("/ask")
-def ask_question(request: QuestionRequest):
-    answer = ask_llm(request.question)
-    return {"answer": answer}
+@app.get("/ask")
+def ask_question(q: str = Query(..., description="Your question for the AI")):
+    answer = ask_llm_with_langchain(q)
+    return {"question": q, "answer": answer}
